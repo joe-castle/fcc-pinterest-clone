@@ -9,7 +9,7 @@
     
   h2 Ecosystem
   ul
-    lu: a(a href="http://router.vuejs.org/" target="_blank") vue-router
+    li: a(a href="http://router.vuejs.org/" target="_blank") vue-router
 </template>
 
 <script>
@@ -17,7 +17,7 @@ export default {
   name: 'hello',
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Welcome to Your Vue.js App LOL',
     };
   },
 };
@@ -38,5 +38,5 @@ li
   margin 0 10px
 
 a
-  color #42b983
+  color red
 </style>
