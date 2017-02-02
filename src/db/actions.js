@@ -33,5 +33,5 @@ export default hash => ({
   },
   del(field) {
     return client.hdelAsync(hash, field);
-  }
+  },
 });

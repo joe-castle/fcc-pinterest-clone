@@ -7,6 +7,7 @@ import bodyParser from 'body-parser';
 import passport from './strategies/twitter';
 
 import users from './controllers/users';
+import pics from './controllers/pics';
 
 import client from './db/client';
 
@@ -26,6 +27,7 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .use('/api/users', users)
+  .use('/api/pics', pics)
   // .get('*', render);
 
 export default app;
