@@ -17,14 +17,46 @@ pics.post('/add', ensureAuthenticated, (req, res) => {
 
   const newPic = {
     id: generate(),
+    // TODO: remove quotes to access user
+    owner: 'req.user.id',
     url: req.body.url,
+    // TODO: remove quotes to access user
     description: req.body.description || `a pic by ${'req.user.displayName'}`,
+    votes: [],
   };
 
   // save to redis
   picsActions.set(newPic.id, newPic);
 
   res.status(201).json(newPic);
+});
+
+pics.put('/vote/:id', ensureAuthenticated, (req, res) => {
+  picsActions
+    .get(req.params.id)
+    .then((pic) => {
+      if (!pic) return res.status(404).send(`Pic: ${req.params.id} does not exist.`);
+
+      let votes;
+
+      // if user has already voted, remove vote, otherwise add vote.
+      // TODO: remove quotes to acces user
+      if (pic.votes.includes('req.user.id')) {
+        votes = pic.votes.filter(user => user !== 'req.user.id');
+      } else {
+        votes = [...pic.votes, 'req.user.id'];
+      }
+
+      const newPic = {
+        ...pic,
+        votes,
+      };
+
+      // save to redis
+      picsActions.set(newPic.id, newPic);
+
+      res.send(newPic);
+    });
 });
 
 pics.delete('/:id', ensureAuthenticated, (req, res) => {
