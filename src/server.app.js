@@ -15,7 +15,8 @@ const app = express();
 const RedisStore = connectRedis(session);
 
 app
-  .use('/assets', express.static(`${__dirname}/../assets`))
+  .use(express.static(`${__dirname}/../static`))
+  .use(express.static(`${__dirname}/../index.html`))
   .use(bodyParser.json())
   .use(cookieParser())
   .use(session({
@@ -27,7 +28,6 @@ app
   .use(passport.initialize())
   .use(passport.session())
   .use('/api/users', users)
-  .use('/api/pics', pics)
-  // .get('*', render);
+  .use('/api/pics', pics);
 
 export default app;

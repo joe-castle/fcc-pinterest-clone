@@ -1,24 +1,20 @@
 <template lang="pug">
-#app
-  img(src="./assets/logo.png")
-  hello
+#app.container-fluid
+  Header
 </template>
 
 <script>
-import Hello from './components/Hello';
+import Header from './components/Header';
 
 export default {
   name: 'app',
   components: {
-    Hello,
+    Header,
   },
 };
 </script>
 
 <style lang="stylus">
-#app
-  font-family 'Avenir', Helvetica, Arial, sans-serif
-  text-align center
-  color #2c3e50
-  margin-top 60px
+.container-fluid
+  padding 0
 </style>
