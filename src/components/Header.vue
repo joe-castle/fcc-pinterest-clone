@@ -15,7 +15,10 @@ header
         li.nav-item(v-show="authed") 
           a.nav-link Add a Pic
 
-      button.btn.btn-primary Login with Twitter
+      span.navbar-text(v-show="authed") Hello Joe Smith
+      a.btn.btn-primary(href="api/users/auth/twitter" v-show="!authed").
+        Login with Twitter
+      a.btn.btn-primary(href="" @click="logout" v-show="authed") Logout
 </template>
 
 <script>
@@ -26,6 +29,11 @@ export default {
       authed: false,
     };
   },
+  methods: {
+    logout() {
+      fetch('api/users/logout', { headers: { method: 'POST' } });
+    },
+  },
 };
 </script>
 
@@ -33,4 +41,7 @@ export default {
 <style lang="stylus" scoped>
 li > a
   cursor pointer
+
+.navbar-text
+  margin-right 15px
 </style>

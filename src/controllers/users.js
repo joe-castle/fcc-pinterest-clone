@@ -7,7 +7,7 @@ const users = Router();
 
 users.post('/logout', (req, res) => {
   req.logout();
-  res.end();
+  res.redirect('/');
 });
 
 users.get('/auth/twitter', passport.authenticate('twitter'));

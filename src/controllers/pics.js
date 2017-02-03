@@ -19,6 +19,7 @@ pics.post('/add', /*ensureAuthenticated,*/ (req, res) => {
     id: generate(),
     // TODO: remove quotes to access user
     owner: 'req.user.id',
+    ownerImg: 'req.user.photo',
     url: req.body.url,
     // TODO: remove quotes to access user
     description: req.body.description || `a pic by ${'req.user.displayName'}`,

@@ -19,6 +19,7 @@ passport.use(new Strategy(
     consumerKey: process.env.TWITTER_KEY || keys.twitterStrategy.consumerKey,
     consumerSecret: process.env.TWITTER_SECRET || keys.twitterStrategy.consumerSecret,
     callbackURL: process.env.NODE_ENV === 'production'
+      // TODO: Update to correct url
       ? 'http://fcc-nightlife2-app.herokuapp.com/api/users/auth/twitter'
       : 'http://localhost:3001/api/users/auth/twitter/callback',
   },
