@@ -1,7 +1,7 @@
 <template lang="pug">
 header
   nav.navbar.navbar-toggleable-md.navbar-light.bg-faded
-    button.navbar-toggler.navbar-toggler-right(data-toggle="collapse")
+    button.navbar-toggler.navbar-toggler-right(type="button" data-toggle="collapse")
       span.navbar-toggler-icon
     
     a.navbar-brand Linkterest

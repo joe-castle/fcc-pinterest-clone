@@ -13,7 +13,7 @@ const store = new Vuex.Store({
       ownerImg: 'https://pbs.twimg.com/profile_images/2482682568/iot58k6qksqctpfjlldr_normal.jpeg',
       url: 'http://www.planwallpaper.com/static/images/desktop-year-of-the-tiger-images-wallpaper.jpg',
       description: 'a pic by @owner1',
-      votes: ['asd', '213', 'asdas'],
+      votes: ['asd', '213', 'asdas', 'user'],
     }, {
       id: 'test1',
       owner: '@owner1',

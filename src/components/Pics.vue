@@ -6,6 +6,12 @@ section
         img.card-img-top(:src="pic.url")
         .card-block
           p.card-text {{ pic.description }}
+        .card-block
+          img.text-left(:src="pic.ownerImg")
+          .votes(:class="{ voted: userVoted(pic) }")
+            i.material-icons {{ userVoted(pic) ? 'favorite' : 'favorite_border' }}
+            span {{ pic.votes.length }}
+
 </template>
 
 <script>
@@ -27,6 +33,12 @@ export default {
       });
     })
   },
+  methods: {
+    userVoted(pic) {
+      // TODO: pull user id from somewhere
+      return pic.votes.includes('user');
+    },
+  },
   computed: mapState({
     pics: state => state.pics,
   }),
@@ -38,10 +50,9 @@ export default {
 section
   width 1040px
   margin 20px auto
-  text-align center
 
   // Adapt the size of the masonry grid to fit the maxmimum elements
-  // This allows it to be centerd properly
+  // This allows it to be centered properly
   @media (max-width: 1039px)
     width 830px
 
@@ -60,4 +71,26 @@ section
 
 .card-img-top
   width 100%
+
+.card-block
+  border-top 1px solid rgba(0,0,0,.125)
+
+.card .card-block:nth-child(3)
+  padding 5px
+  display flex
+  justify-content space-between
+  align-items center
+
+  .votes
+    border 1px solid rgba(0,0,0,.125)
+    padding 2.5px 10px
+    display flex
+    align-items center
+
+    i
+      margin-right 5px
+
+    &.voted
+      color #0275d8
+
 </style>
