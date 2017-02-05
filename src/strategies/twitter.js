@@ -32,28 +32,31 @@ passport.use(new Strategy(
         if (!user) {
           newUser = {
             id: profile.id,
-            displayName: profile.displayName,
-            photo: profile.photos[0],
-            ownPics: [],
+            name: profile.displayName,
+            photo: profile.photos[0].value,
           };
 
           // Save new user to redis.
           users.set(newUser.id, newUser);
         }
-
+        console.log('User created: %s / logged in: %s', newUser, user);
         done(null, user || newUser);
       });
   }
 ));
 
 passport.serializeUser((user, done) => {
+  console.log('User serialized: ', user);
   done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
   users
     .get(id)
-    .then(user => done(null, user));
+    .then(user => {
+      console.log('User deserialized: ', user);
+      done(null, user);
+    });
 });
 
 export default passport;

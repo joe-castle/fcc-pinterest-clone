@@ -10,4 +10,8 @@ new Vue({
   store,
   template: '<App/>',
   components: { App },
+  mounted() {
+    // Get authed user if exists.
+    store.dispatch('getAuthedUser');
+  },
 });
