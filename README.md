@@ -1,5 +1,7 @@
 # fcc-pinterest-clone
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/joesmith100/fcc-pinterest-clone.svg)](https://greenkeeper.io/)
+
 > A clone of pinterest for FCC
 
 ## Build Setup
